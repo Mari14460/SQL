@@ -1,5 +1,6 @@
 package ru.netology.web.test;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import ru.netology.web.data.DataHelper;
 import ru.netology.web.data.SQLHelper;
@@ -17,5 +18,10 @@ class LoginTest {
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = SQLHelper.getVerificationCode();
         var dashboardPage = verificationPage.validVerify(verificationCode);
+    }
+
+    @AfterAll
+    static void cleanDB(){
+        SQLHelper.cleanDB();
     }
 }

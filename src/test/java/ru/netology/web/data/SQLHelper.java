@@ -28,15 +28,14 @@ public class SQLHelper {
     }
 
 
-@SneakyThrows
-private static void cleanDB (){
+    @SneakyThrows
+    public static void cleanDB() {
         var connection = getConnection();
-        runner.execute("DELETE FROM card_transactions");
-        runner.execute("DELETE FROM card_transactions");
-        runner.execute("DELETE FROM card_transactions");
-        runner.execute("DELETE FROM card_transactions");
+        runner.execute(connection, "DELETE FROM card_transactions");
+        runner.execute(connection, "DELETE FROM cards");
+        runner.execute(connection, "DELETE FROM auth_codes");
+        runner.execute(connection, "DELETE FROM users");
     }
-
 
 
 }
